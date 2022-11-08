@@ -11,6 +11,7 @@
   "dependencies": {
     "@apollo/client": "^3.7.1",
     "@hookform/error-message": "^2.0.0",
+    "@types/jest": "^29.2.2",
     "bulma": "^0.9.4",
     "clsx": "^1.2.1",
     "dayjs": "^1.11.6",
@@ -27,6 +28,7 @@
   "devDependencies": {
     "@types/react": "^18.0.24",
     "@types/react-dom": "^18.0.8",
+    "@types/react-helmet": "^6.1.5",
     "@vitejs/plugin-react": "^2.2.0",
     "typescript": "^4.6.4",
     "vite": "^3.2.3"
