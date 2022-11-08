@@ -1,3 +1,20 @@
+$primary: #4ea5e0
+$background: #121212
+$red: #c00
+$danger: lighten(#c00, 20%)
+$green: #27ae60
+$text: rgba(255, 255, 255, .6)
+$surface: #202020
+$surface-2: #2a2a2a
+$surface-3: #303030
+$input-background-color: $surface-3
+$body-background-color: #121212
+$emphasis-color: rgba(255, 255, 255, .85)
+$text-strong: $emphasis-color
+$button-color: $body-background-color
+$input-color: $emphasis-color
+$notification-background-color: $surface-3
+
 @import "bulma/sass/utilities/derived-variables"
 @import rem_calc
 
@@ -9,13 +26,11 @@ $family-monospace: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation
 $notification-padding-ltr: .75rem 1rem
 
 $sidebar-width: 300px
-$background: #f0f0f0
-$sidebar-bg: #06283d
-$sidebar-fg: #fff
+$fg-color: rgba(255, 255, 255, .6)
+$sidebar-bg: desaturate(darken($primary, 45%), 30%)
+$sidebar-fg: $emphasis-color
 $sidebar-base-padding: 20px
 $sidebar-link-height: 40px
-$danger: #c00
-$red: #c00
 $form-field-width: rem-calc(400)
 $input-height: rem-calc(38)
 $input-border-color: #757575
@@ -25,3 +40,4 @@ $input-radius: 3px
 $control-height: $input-height
 
 $table-row-hover-background-color: darken(white, 4%)
+

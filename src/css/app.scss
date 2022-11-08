@@ -6,3 +6,12 @@
     margin-bottom: 0.25em
   }
 }
+
+pre {
+  background: $surface;
+  color: $text;
+}
+
+.button.is-success {
+  color: black;
+}
