@@ -30,9 +30,6 @@ const LoginPage: React.FC<Props> = () => {
           <div className="notification is-warning">{JSON.stringify(error)}</div>
         ) : null}
         <h1 className="title is-4 has-text-centered">Sign in</h1>
-        <p>
-          Don't have an account? <Link to="/sign-up">Sign up</Link>
-        </p>
         <InputField
           label="Email:"
           {...register("email")}
