@@ -9,11 +9,11 @@ import Layout from "../Layout";
 interface Props {}
 
 const LoginPage: React.FC<Props> = () => {
-  const [mutate, { data, loading }] = useSignInMutation();
+  const [mutate, { data, called, loading }] = useSignInMutation();
   const methods = useForm<SignInMutationVariables>();
   const { register } = methods;
   const navigate = useNavigate();
-  const hasError = !loading && !data?.signIn.success;
+  const hasError = called && !loading && !data?.signIn.success;
 
   const onSubmit = useCallback(async (data: SignInMutationVariables) => {
     const result = await mutate({ variables: data });

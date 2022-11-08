@@ -1,3 +1,7 @@
+export type ID = string;
+export type ISOTimestamp = string;
+export type Decimal = string;
+
 export interface ErrorObject {
   key: string;
   message: string;

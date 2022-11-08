@@ -13,7 +13,8 @@ const Sidebar = () => {
         <h1 className="title">{APP_NAME}</h1>
       </Link>
       <nav>
-        <SidebarLink to="/">Orders</SidebarLink>
+        <SidebarLink to="/">Real-time dashboard</SidebarLink>
+        <SidebarLink to="/orders">Orders</SidebarLink>
         <SidebarLink to="/products">Products</SidebarLink>
       </nav>
       <section className={styles.userData}>
