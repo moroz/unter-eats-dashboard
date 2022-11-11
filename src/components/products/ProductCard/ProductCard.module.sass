@@ -1,3 +1,22 @@
+@import @css/variables
+
 .card
   width: 100%
+  position: relative
+  color: inherit
 
+  &:hover
+    color: $primary
+
+.label
+  position: absolute
+  bottom: 0
+  left: 0
+  right: 0
+  background: rgba(0, 0, 0, .5)
+  padding: .5em 1em
+  min-height: 33.3%
+
+.name, .price
+  line-height: 1.25
+  display: block
