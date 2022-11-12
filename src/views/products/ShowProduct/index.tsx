@@ -1,4 +1,5 @@
 import { useGetProductQuery } from "@api/queries/productQueries";
+import AttributesList from "@components/AttributesList";
 import { EditButton } from "@components/buttons";
 import { formatPrice } from "@lib/priceHelpers";
 import Layout from "@views/Layout";
@@ -6,7 +7,6 @@ import { LayoutLoader } from "@views/Layout/Loader";
 import NotFound from "@views/NotFound";
 import React from "react";
 import { useParams } from "react-router-dom";
-import styles from "./ShowProduct.module.sass";
 
 interface Props {}
 
@@ -27,32 +27,16 @@ const ShowProduct: React.FC<Props> = () => {
     >
       <div>
         <EditButton to={`/products/${id}/edit`} />
-        <div className={styles.table}>
-          <p>
-            <strong>Price:</strong>
-            <span>{formatPrice(product.price)}</span>
-          </p>
-          <p>
-            <strong>Friendly URL:</strong>
-            <code>{product.slug}</code>
-          </p>
-          <p>
-            <strong>Name in Polish:</strong>
-            <span>{product.namePl}</span>
-          </p>
-          <p>
-            <strong>Name in English:</strong>
-            <span>{product.nameEn}</span>
-          </p>
-          <p>
-            <strong>Description in Polish:</strong>
-            <span>{product.descriptionPl}</span>
-          </p>
-          <p>
-            <strong>Description in English:</strong>
-            <span>{product.descriptionEn}</span>
-          </p>
-        </div>
+        <AttributesList>
+          {[
+            { label: "Price:", value: formatPrice(product.price) },
+            { label: "Friendly URL:", value: product.slug, monospace: true },
+            { label: "Name in Polish:", value: product.namePl },
+            { label: "Name in English:", value: product.nameEn },
+            { label: "Description in Polish:", value: product.descriptionPl },
+            { label: "Description in English:", value: product.descriptionEn }
+          ]}
+        </AttributesList>
       </div>
     </Layout>
   );

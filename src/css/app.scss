@@ -12,11 +12,19 @@ pre {
   color: $text;
 }
 
-.button.is-success {
-  color: black;
+.button.is-success, .button.is-info {
+  color: $body-background-color;
+
+  &:hover {
+    color: $body-background-color;
+  }
 }
 
 .container {
   width: $container-width;
   margin: 0 auto;
+}
+
+a:hover {
+  color: lighten($link, 10%);
 }
