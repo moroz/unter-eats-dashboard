@@ -1,3 +1,2 @@
-export * from "./clientFragments";
+export * from "./productFragments";
 export * from "./paginationFragments";
-export * from "./invoiceFragments";
