@@ -1,6 +1,6 @@
 import { PaginationPage, Product } from "@api/interfaces";
-import React, { useMemo } from "react";
-import { useLocation } from "react-router-dom";
+import useReferrer from "@hooks/useReferrer";
+import React from "react";
 import ProductCard from "../ProductCard";
 import styles from "./ProductGrid.module.sass";
 
@@ -9,10 +9,7 @@ interface Props {
 }
 
 const ProductGrid: React.FC<Props> = ({ page }) => {
-  const location = useLocation();
-  const referrer = useMemo(() => {
-    return location.pathname + location.search;
-  }, [location]);
+  const { referrer } = useReferrer();
 
   return (
     <div className={styles.grid}>
