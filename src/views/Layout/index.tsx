@@ -10,6 +10,7 @@ import { APP_NAME } from "@/config";
 
 interface Props {
   children?: React.ReactNode;
+  containerClassName?: string;
   title?: string;
   subtitle?: string;
   backUrl?: string;
@@ -25,7 +26,8 @@ const Layout: React.FC<Props> = ({
   backUrl,
   actions,
   padding = true,
-  header = true
+  header = true,
+  containerClassName
 }) => {
   const { user, loading } = useAuth();
   const navigate = useNavigate();
@@ -50,7 +52,7 @@ const Layout: React.FC<Props> = ({
         </title>
       </Helmet>
       <Sidebar />
-      <main role="main">
+      <main role="main" className={containerClassName}>
         {header ? (
           <header>
             <div className={styles.title}>

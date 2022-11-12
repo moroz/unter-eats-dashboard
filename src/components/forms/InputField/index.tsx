@@ -78,7 +78,6 @@ const InputField = React.forwardRef(
           "field input-field",
           styles.root,
           { "has-error": errors[name], "is-horizontal": horizontal },
-          monospace && "is-family-monospace",
           className
         )}
       >

@@ -1,4 +1,5 @@
 import {
+  ID,
   PaginationPage,
   Product,
   StandardPaginationParams
@@ -42,3 +43,35 @@ export const usePaginateProductsQuery = (params: StandardPaginationParams) =>
       }
     }
   );
+
+export const GET_PRODUCT = gql`
+  query GetProduct($id: ID!) {
+    product(id: $id) {
+      id
+      namePl
+      nameEn
+      slug
+      descriptionPl
+      descriptionEn
+      price
+      categories {
+        id
+        namePl
+        nameEn
+      }
+    }
+  }
+`;
+
+export interface GetProductQueryResult {
+  product: Product | null;
+}
+
+export interface GetProductQueryVariables {
+  id: ID;
+}
+
+export const useGetProductQuery = (id: ID) =>
+  useQuery<GetProductQueryResult, GetProductQueryVariables>(GET_PRODUCT, {
+    variables: { id }
+  });

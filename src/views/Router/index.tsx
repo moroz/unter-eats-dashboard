@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import NotFound from "@views/NotFound";
 import { OrderIndex } from "@views/orders";
 import { LoginPage } from "@views/unauthenticated";
-import { ProductIndex } from "@views/products";
+import { ProductRoutes } from "@views/products";
 
 interface Props {}
 
@@ -14,7 +14,7 @@ const Router: React.FC<Props> = () => {
       <Route path="/" element={<Dashboard />} />
       <Route path="/sign-in" element={<LoginPage />} />
       <Route path="/orders" element={<OrderIndex />} />
-      <Route path="/products" element={<ProductIndex />} />
+      <Route path="/products/*" element={<ProductRoutes />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
