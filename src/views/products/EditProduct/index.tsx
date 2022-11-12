@@ -2,23 +2,18 @@ import { Product, UpdateProductParams } from "@api/interfaces";
 import { useUpdateProductMutation } from "@api/mutations";
 import { useGetProductQuery } from "@api/queries/productQueries";
 import { SubmitButton } from "@components/buttons";
-import {
-  FormWrapper,
-  InputField,
-  InputGroup,
-  Textarea
-} from "@components/forms";
+import { FormWrapper } from "@components/forms";
 import Message from "@components/Message";
 import { omit } from "@lib/fakeLodash";
 import { setFormErrors } from "@lib/formHelpers";
 import Layout from "@views/Layout";
+import { FlashMessageLevel, useFlash } from "@views/Layout/FlashProvider";
 import { LayoutLoader } from "@views/Layout/Loader";
 import NotFound from "@views/NotFound";
 import React, { useCallback, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import FormFields from "../FormFields";
-import styles from "./EditProduct.module.sass";
 
 interface Props {}
 
@@ -27,10 +22,13 @@ const EditProduct: React.FC<Props> = () => {
   const { data, loading } = useGetProductQuery(id!);
   const [mutate, { data: mutationData }] = useUpdateProductMutation();
   const methods = useForm<UpdateProductParams>();
-  const { register, reset, setError } = methods;
+  const { reset, setError } = methods;
   const product = data?.product;
+  const navigate = useNavigate();
+  const { addMessage } = useFlash();
 
   const success = mutationData?.result.success;
+  const backUrl = `/products/${id}`;
 
   const resetFormWithProduct = useCallback(
     (product: Product) => {
@@ -60,7 +58,14 @@ const EditProduct: React.FC<Props> = () => {
       if (!res.data?.result.success) {
         setFormErrors(setError, res.data?.result.errors);
       } else {
-        resetFormWithProduct(res.data.result.data);
+        addMessage(
+          {
+            level: FlashMessageLevel.Success,
+            body: "The product has been successfully updated."
+          },
+          true
+        );
+        navigate(backUrl);
       }
     },
     [mutate, product]
@@ -69,21 +74,23 @@ const EditProduct: React.FC<Props> = () => {
   if (loading && !data) return <LayoutLoader />;
   if (!product) return <NotFound />;
 
-  const title = `Product: ${product.namePl}`;
-
   return (
-    <Layout title={title}>
-      <div className={styles.columns}>
-        <FormWrapper {...methods} onSubmit={onSubmit}>
-          {success === true && (
-            <Message level="success">
-              The product has been successfully updated.
-            </Message>
-          )}
-          <FormFields />
-          <SubmitButton>Update product</SubmitButton>
-        </FormWrapper>
-      </div>
+    <Layout
+      title={product.namePl}
+      subtitle="Editing product"
+      centered
+      backUrl={backUrl}
+    >
+      <FormWrapper {...methods} onSubmit={onSubmit}>
+        {success === false && (
+          <Message level="danger">
+            The product could not be saved. Please review the error messages in
+            the form below:
+          </Message>
+        )}
+        <FormFields />
+        <SubmitButton>Update product</SubmitButton>
+      </FormWrapper>
     </Layout>
   );
 };

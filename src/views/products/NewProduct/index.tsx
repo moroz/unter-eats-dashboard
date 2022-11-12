@@ -31,7 +31,7 @@ const NewProduct: React.FC<Props> = () => {
   );
 
   return (
-    <Layout title="New product">
+    <Layout title="New product" centered>
       <FormWrapper {...methods} onSubmit={onSubmit}>
         <FormFields />
         <SubmitButton>Create product</SubmitButton>

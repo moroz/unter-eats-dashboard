@@ -8,6 +8,8 @@ import { Helmet } from "react-helmet";
 import clsx from "clsx";
 import { APP_NAME } from "@/config";
 import useParsedQuery from "@hooks/useParsedQuery";
+import { useFlash } from "./FlashProvider";
+import FlashMessage from "./FlashMessage";
 
 interface Props {
   children?: React.ReactNode;
@@ -18,6 +20,7 @@ interface Props {
   header?: boolean;
   padding?: boolean;
   actions?: React.ReactNode;
+  centered?: boolean;
 }
 
 const Layout: React.FC<Props> = ({
@@ -28,11 +31,13 @@ const Layout: React.FC<Props> = ({
   actions,
   padding = true,
   header = true,
-  containerClassName
+  containerClassName,
+  centered
 }) => {
   const { user, loading } = useAuth();
   const navigate = useNavigate();
   const [{ ref: referrer }] = useParsedQuery();
+  const { messages } = useFlash();
 
   useEffect(() => {
     if (!loading && !user) navigate("/sign-in");
@@ -54,7 +59,10 @@ const Layout: React.FC<Props> = ({
         </title>
       </Helmet>
       <Sidebar />
-      <main role="main" className={containerClassName}>
+      <main
+        role="main"
+        className={clsx(containerClassName, centered && "container")}
+      >
         {header ? (
           <header>
             <div className={styles.title}>
@@ -69,6 +77,7 @@ const Layout: React.FC<Props> = ({
             {actions ? <div className={styles.actions}>{actions}</div> : null}
           </header>
         ) : null}
+        {messages.map(FlashMessage)}
         {children}
       </main>
     </div>

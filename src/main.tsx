@@ -5,12 +5,15 @@ import { ApolloProvider } from "@apollo/client";
 import "./css/app.scss";
 import { BrowserRouter } from "react-router-dom";
 import Router from "@views/Router";
+import { FlashProvider } from "@views/Layout/FlashProvider";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <ApolloProvider client={client}>
       <BrowserRouter>
-        <Router />
+        <FlashProvider>
+          <Router />
+        </FlashProvider>
       </BrowserRouter>
     </ApolloProvider>
   </React.StrictMode>
