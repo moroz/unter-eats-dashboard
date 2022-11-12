@@ -39,6 +39,7 @@ const Pagination: React.FC<Props> = ({ pageInfo }) => {
           pageCount={totalPages}
           disableInitialCallback
           onPageChange={onChangePage}
+          hrefAllControls
           initialPage={page - 1}
           pageLinkClassName="pagination-link"
           containerClassName="pagination-list"
