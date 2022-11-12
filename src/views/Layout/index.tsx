@@ -7,6 +7,7 @@ import Sidebar from "./Sidebar";
 import { Helmet } from "react-helmet";
 import clsx from "clsx";
 import { APP_NAME } from "@/config";
+import useParsedQuery from "@hooks/useParsedQuery";
 
 interface Props {
   children?: React.ReactNode;
@@ -31,6 +32,7 @@ const Layout: React.FC<Props> = ({
 }) => {
   const { user, loading } = useAuth();
   const navigate = useNavigate();
+  const [{ ref: referrer }] = useParsedQuery();
 
   useEffect(() => {
     if (!loading && !user) navigate("/sign-in");
@@ -56,8 +58,8 @@ const Layout: React.FC<Props> = ({
         {header ? (
           <header>
             <div className={styles.title}>
-              {backUrl ? (
-                <Link to={backUrl} className={styles.breadcrumb}>
+              {backUrl || referrer ? (
+                <Link to={referrer || backUrl} className={styles.breadcrumb}>
                   &lt;&lt; Back
                 </Link>
               ) : null}

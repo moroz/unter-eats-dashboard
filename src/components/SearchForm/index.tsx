@@ -55,7 +55,7 @@ const SearchForm: React.FC<Props> = () => {
     };
   }, []);
 
-  const placeholder = hasFocus ? `搜尋文章` : `按 / 來搜尋文章`;
+  const placeholder = hasFocus ? `Filter by name...` : `Press / to search`;
 
   return (
     <form className={clsx(styles.root, "field")} onSubmit={onSubmit}>

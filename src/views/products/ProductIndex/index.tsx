@@ -5,19 +5,22 @@ import React from "react";
 import { ProductGrid } from "@components/products";
 import Pagination from "@components/Pagination";
 import useParsedQuery from "@hooks/useParsedQuery";
+import SearchForm from "@components/SearchForm";
 
 interface Props {}
 
 const ProductIndex: React.FC<Props> = () => {
-  const [{ page }] = useParsedQuery();
-  const { data, loading } = usePaginateProductsQuery({ page });
+  const [{ page, q }] = useParsedQuery();
+  const { data, previousData } = usePaginateProductsQuery({ page, q });
 
-  if (loading && !data) return <LayoutLoader />;
+  const result = data?.paginateProducts ?? previousData?.paginateProducts;
+
+  if (!result) return <LayoutLoader />;
 
   return (
-    <Layout title="Products">
-      <ProductGrid page={data!.paginateProducts} />
-      <Pagination pageInfo={data?.paginateProducts.pageInfo} />
+    <Layout title="Products" actions={<SearchForm />}>
+      <ProductGrid page={result} />
+      <Pagination pageInfo={result.pageInfo} />
     </Layout>
   );
 };

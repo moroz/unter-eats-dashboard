@@ -7,11 +7,16 @@ import { Link } from "react-router-dom";
 
 interface Props {
   product: Product;
+  referrer?: string;
 }
 
-const ProductCard: React.FC<Props> = ({ product }) => {
+const ProductCard: React.FC<Props> = ({ product, referrer }) => {
+  const search = referrer
+    ? new URLSearchParams({ ref: referrer }).toString()
+    : "";
+  const href = `/products/${product.id}?${search}`;
   return (
-    <Link to={`/products/${product.id}`} className={styles.card}>
+    <Link to={href} className={styles.card}>
       <ProductImage product={product} />
       <section className={styles.label}>
         <span className={styles.name}>{product.namePl}</span>
