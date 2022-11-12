@@ -6,6 +6,7 @@ import { ProductGrid } from "@components/products";
 import Pagination from "@components/Pagination";
 import useParsedQuery from "@hooks/useParsedQuery";
 import SearchForm from "@components/SearchForm";
+import { NewButton } from "@components/buttons";
 
 interface Props {}
 
@@ -18,7 +19,15 @@ const ProductIndex: React.FC<Props> = () => {
   if (!result) return <LayoutLoader />;
 
   return (
-    <Layout title="Products" actions={<SearchForm />}>
+    <Layout
+      title="Products"
+      actions={
+        <div className="buttons">
+          <NewButton to={`/products/new`} className="is-success" />
+          <SearchForm />
+        </div>
+      }
+    >
       <ProductGrid page={result} />
       <Pagination pageInfo={result.pageInfo} />
     </Layout>

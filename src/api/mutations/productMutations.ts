@@ -11,7 +11,7 @@ import { gql, useMutation } from "@apollo/client";
 export const CREATE_PRODUCT = gql`
   ${PRODUCT_DETAILS}
 
-  mutation CreateProduct($params: ProductParams!) {
+  mutation CreateProduct($params: CreateProductParams!) {
     result: createProduct(params: $params) {
       success
       data {

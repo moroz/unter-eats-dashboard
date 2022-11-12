@@ -17,6 +17,7 @@ import NotFound from "@views/NotFound";
 import React, { useCallback, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
+import FormFields from "../FormFields";
 import styles from "./EditProduct.module.sass";
 
 interface Props {}
@@ -79,37 +80,7 @@ const EditProduct: React.FC<Props> = () => {
               The product has been successfully updated.
             </Message>
           )}
-          <InputGroup columns={2}>
-            <InputField
-              autoFocus
-              label="Name in Polish:"
-              {...register("namePl")}
-              required
-            />
-            <InputField label="Name in English:" {...register("nameEn")} />
-          </InputGroup>
-          <InputGroup columns={2}>
-            <InputField
-              label="Slug (URL name):"
-              {...register("slug")}
-              monospace
-              required
-            />
-            <InputField
-              type="number"
-              label="Price in PLN:"
-              {...register("price")}
-              required
-            />
-          </InputGroup>
-          <Textarea
-            label="Description in Polish:"
-            {...register("descriptionPl")}
-          />
-          <Textarea
-            label="Description in English:"
-            {...register("descriptionEn")}
-          />
+          <FormFields />
           <SubmitButton>Update product</SubmitButton>
         </FormWrapper>
       </div>

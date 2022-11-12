@@ -44,27 +44,7 @@ const InputField = React.forwardRef(
         ) : (
           <span className={styles.optionalText}>(optional)</span>
         )}
-        {helperText ? (
-          <span className={clsx("help", styles.help)}>{helperText}</span>
-        ) : null}
       </label>
-    );
-
-    const content = (
-      <>
-        <input
-          className={clsx(
-            "input",
-            errors[name] && "is-danger",
-            monospace && "is-family-monospace"
-          )}
-          id={id}
-          name={name}
-          {...rest}
-          ref={ref}
-        />
-        <ErrorMessage name={name} errors={errors} />
-      </>
     );
 
     const style = {
@@ -81,19 +61,22 @@ const InputField = React.forwardRef(
           className
         )}
       >
-        {!horizontal ? (
-          <>
-            {labelTag}
-            {content}
-          </>
-        ) : (
-          <>
-            <div className="field-label is-normal">{labelTag}</div>
-            <div className="field-body">
-              <div className="field">{content}</div>
-            </div>
-          </>
-        )}
+        {labelTag}
+        <input
+          className={clsx(
+            "input",
+            errors[name] && "is-danger",
+            monospace && "is-family-monospace"
+          )}
+          id={id}
+          name={name}
+          {...rest}
+          ref={ref}
+        />
+        {helperText ? (
+          <span className={clsx("help", styles.help)}>{helperText}</span>
+        ) : null}
+        <ErrorMessage name={name} errors={errors} />
       </div>
     );
   }
