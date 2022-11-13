@@ -19,6 +19,7 @@ export const PAGINATE_PRODUCTS = gql`
         id
         price
         namePl
+        imageUuid
         descriptionPl
         slug
       }

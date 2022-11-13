@@ -6,6 +6,7 @@ export interface Product {
   nameEn: string | null;
   descriptionPl: string | null;
   descriptionEn: string | null;
+  imageUuid: string | null;
   price: Decimal | null;
   slug: string;
 

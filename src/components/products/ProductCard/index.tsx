@@ -4,6 +4,7 @@ import React from "react";
 import ProductImage from "../ProductImage";
 import styles from "./ProductCard.module.sass";
 import { Link } from "react-router-dom";
+import clsx from "clsx";
 
 interface Props {
   product: Product;
@@ -16,7 +17,10 @@ const ProductCard: React.FC<Props> = ({ product, referrer }) => {
     : "";
   const href = `/products/${product.id}?${search}`;
   return (
-    <Link to={href} className={styles.card}>
+    <Link
+      to={href}
+      className={clsx(styles.card, product.imageUuid && styles.hasImage)}
+    >
       <ProductImage product={product} />
       <section className={styles.label}>
         <span className={styles.name}>{product.namePl}</span>
