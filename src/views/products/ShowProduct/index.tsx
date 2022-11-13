@@ -29,6 +29,7 @@ const ShowProduct: React.FC<Props> = () => {
         <EditButton to={`/products/${id}/edit`} />
         <AttributesList>
           {[
+            { label: "Database ID:", value: product.id },
             { label: "Price:", value: formatPrice(product.price) },
             { label: "Friendly URL:", value: product.slug, monospace: true },
             { label: "Name in Polish:", value: product.namePl },
