@@ -25,11 +25,9 @@ export const PAGINATE_ORDERS = gql`
         lineItems {
           id
           quantity
-          product {
-            id
-            namePl
-            price
-          }
+          productId
+          productName
+          productPrice
         }
       }
     }
