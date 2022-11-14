@@ -52,6 +52,7 @@ export const GET_PRODUCT = gql`
       namePl
       nameEn
       slug
+      imageUuid
       descriptionPl
       descriptionEn
       price

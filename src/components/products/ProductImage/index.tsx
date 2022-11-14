@@ -1,18 +1,20 @@
 import { ASSET_HOST } from "@/config";
 import { Product } from "@api/interfaces";
+import clsx from "clsx";
 import React from "react";
 import styles from "./ProductImage.module.sass";
 
 interface Props {
   product: Product;
+  className?: string;
 }
 
-const ProductImage: React.FC<Props> = ({ product }) => {
+const ProductImage: React.FC<Props> = ({ product, className }) => {
   const uuid = product.imageUuid;
   const base_dir = uuid && `${ASSET_HOST}/images/${uuid.slice(0, 2)}/${uuid}`;
 
   return (
-    <picture className={styles.root}>
+    <picture className={clsx(styles.root, className)}>
       {uuid ? (
         <>
           <source
