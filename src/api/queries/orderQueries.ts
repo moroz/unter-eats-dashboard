@@ -37,3 +37,20 @@ export const usePaginateOrdersQuery = (params: StandardPaginationParams) =>
     PAGINATE_ORDERS,
     { variables: { params } }
   );
+
+export const LIST_INCOMING_ORDERS = gql`
+  ${ORDER_DETAILS}
+
+  query ListIncomingOrders {
+    orders: incomingOrders {
+      ...OrderDetails
+    }
+  }
+`;
+
+export interface ListIncomingOrdersQueryResult {
+  orders: Order[];
+}
+
+export const useListIncomingOrdersQuery = () =>
+  useQuery<ListIncomingOrdersQueryResult>(LIST_INCOMING_ORDERS);

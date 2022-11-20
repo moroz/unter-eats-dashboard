@@ -1,4 +1,4 @@
-import Dashboard from "@views/Dashboard";
+import { Dashboard } from "@views/dashboard";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import NotFound from "@views/NotFound";
