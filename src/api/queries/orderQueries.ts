@@ -1,3 +1,4 @@
+import { ORDER_DETAILS } from "@api/fragments/orderFragments";
 import {
   Order,
   PaginationPage,
@@ -6,6 +7,8 @@ import {
 import { gql, useQuery } from "@apollo/client";
 
 export const PAGINATE_ORDERS = gql`
+  ${ORDER_DETAILS}
+
   query PaginateOrders($params: OrderPaginationParams!) {
     paginateOrders(params: $params) {
       pageInfo {
@@ -15,20 +18,7 @@ export const PAGINATE_ORDERS = gql`
         pageSize
       }
       data {
-        id
-        shippingAddress
-        deliveryType
-        email
-        firstName
-        lastName
-        grandTotal
-        lineItems {
-          id
-          quantity
-          productId
-          productName
-          productPrice
-        }
+        ...OrderDetails
       }
     }
   }

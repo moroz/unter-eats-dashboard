@@ -1,5 +1,5 @@
 import useAuth from "@hooks/useAuth";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { VITE_GRAPHQL_URL } from "../client";
 import { Socket as PhoenixSocket } from "phoenix";
 import { createAbsintheSocketLink } from "@absinthe/socket-apollo-link";
@@ -18,35 +18,36 @@ const resolveSocketURL = () => {
 };
 
 export const useSubscriptionClient = () => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
+  const [connected, setConnected] = useState(false);
 
-  const socketRef = useRef<PhoenixSocket | null>(null);
+  const socketRef = useRef<PhoenixSocket | null>(
+    new PhoenixSocket(resolveSocketURL())
+  );
   const linkRef = useRef<any>(null);
   const clientRef = useRef<any>(null);
 
   useEffect(() => {
-    if (!user) return;
+    if (!user || connected) return;
 
     const token = user?.subscriptionToken;
-    socketRef.current = new PhoenixSocket(resolveSocketURL(), {
-      params: { token }
+    socketRef.current?.onOpen(() => {
+      setConnected(true);
     });
-    socketRef.current?.connect();
+    socketRef.current?.connect({ token });
+
     linkRef.current = createAbsintheSocketLink(
-      AbsintheSocket.create(socketRef.current)
+      AbsintheSocket.create(socketRef.current!)
     );
 
     clientRef.current = new ApolloClient({
       cache: new InMemoryCache(),
       link: linkRef.current
     });
+  }, [user, loading, clientRef.current]);
 
-    return () => {
-      socketRef.current?.disconnect();
-    };
-  }, [user]);
-
-  if (!user) return null;
-
-  return clientRef.current;
+  return {
+    connected,
+    client: clientRef.current
+  };
 };

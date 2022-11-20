@@ -8,7 +8,9 @@ interface Props {
 export const SubscriptionClientContext = React.createContext<any>(null);
 
 const SubscriptionProvider: React.FC<Props> = ({ children }) => {
-  const client = useSubscriptionClient();
+  const { client, connected } = useSubscriptionClient();
+
+  if (!connected) return null;
 
   return (
     <SubscriptionClientContext.Provider value={client}>

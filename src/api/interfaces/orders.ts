@@ -9,6 +9,7 @@ export interface Order {
   grandTotal: Decimal;
   lineItems: LineItem[];
 
+  paidAt: ISOTimestamp | null;
   insertedAt: ISOTimestamp;
   updatedAt: ISOTimestamp;
 }

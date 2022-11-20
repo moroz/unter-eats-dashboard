@@ -10,6 +10,7 @@ import { APP_NAME } from "@/config";
 import useParsedQuery from "@hooks/useParsedQuery";
 import { useFlash } from "./FlashProvider";
 import FlashMessage from "./FlashMessage";
+import { SubscriptionProvider } from "@api/subscriptions";
 
 interface Props {
   children?: React.ReactNode;
@@ -49,7 +50,9 @@ const Layout: React.FC<Props> = ({
 
   return (
     <div
-      className={clsx(styles.root, { [styles.noPadding]: !padding && !header })}
+      className={clsx(styles.root, {
+        [styles.noPadding]: !padding && !header
+      })}
     >
       <Helmet>
         <title>
