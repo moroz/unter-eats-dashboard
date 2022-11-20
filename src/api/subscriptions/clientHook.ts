@@ -8,10 +8,10 @@ import { ApolloClient, InMemoryCache } from "@apollo/client";
 
 const resolveSocketURL = () => {
   const parsed = new URL(VITE_GRAPHQL_URL);
-  if (parsed.protocol === "https") {
-    parsed.protocol = "wss";
+  if (parsed.protocol === "https:") {
+    parsed.protocol = "wss:";
   } else {
-    parsed.protocol = "ws";
+    parsed.protocol = "ws:";
   }
   parsed.pathname = "/api/ws";
   return parsed.toString();
