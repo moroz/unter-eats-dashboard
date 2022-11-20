@@ -6,7 +6,22 @@ import { useSubscriptionClientContext } from "./contextHook";
 export const ORDER_PLACED_SUBSCRIPTION = gql`
   subscription GetNewOrders {
     orderPlaced {
+      # Fragments don't seem to be working correctly with Apollo Subscriptions
       id
+      shippingAddress
+      firstName
+      lastName
+      grandTotal
+      deliveryType
+      shippingAddress
+      phoneNo
+      paidAt
+      lineItems {
+        id
+        quantity
+        productName
+        productPrice
+      }
     }
   }
 `;
