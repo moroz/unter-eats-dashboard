@@ -1,6 +1,9 @@
+import dayjs from "dayjs";
+
 export type ID = string;
 export type ISOTimestamp = string;
 export type Decimal = string;
+export type AnyDate = ISOTimestamp | dayjs.Dayjs | Date;
 
 export interface ErrorObject {
   key: string;

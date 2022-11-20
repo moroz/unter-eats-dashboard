@@ -1,7 +1,5 @@
 import { useListIncomingOrdersQuery } from "@api/queries";
 import { useOrderPlacedSubscription } from "@api/subscriptions";
-import { Card } from "@components";
-import clsx from "clsx";
 import React from "react";
 import OrderCard from "../OrderCard";
 import styles from "./DashboardRenderer.module.sass";

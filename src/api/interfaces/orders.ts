@@ -4,8 +4,12 @@ import { LineItem } from "./lineItems";
 export interface Order {
   id: ID;
 
-  namePl: string;
-  descriptionPl: string;
+  email: string;
+  firstName: string;
+  lastName: string | null;
+  shippingAddress: string | null;
+  phoneNo: string;
+  deliveryType: "PICKUP" | "DELIVERY";
   grandTotal: Decimal;
   lineItems: LineItem[];
 

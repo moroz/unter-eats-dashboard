@@ -6,6 +6,7 @@ export const ORDER_DETAILS = gql`
     shippingAddress
     firstName
     lastName
+    email
     grandTotal
     deliveryType
     shippingAddress

@@ -18,6 +18,7 @@ export const ORDER_PLACED_SUBSCRIPTION = gql`
       # Fragments don't seem to be working correctly with Apollo Subscriptions
       id
       shippingAddress
+      email
       firstName
       lastName
       grandTotal
