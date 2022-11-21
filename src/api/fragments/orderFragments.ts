@@ -12,6 +12,7 @@ export const ORDER_DETAILS = gql`
     shippingAddress
     phoneNo
     paidAt
+    fulfilledAt
     lineItems {
       id
       quantity

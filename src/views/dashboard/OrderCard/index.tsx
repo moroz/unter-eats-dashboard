@@ -7,9 +7,10 @@ import styles from "./OrderCard.module.sass";
 
 interface Props {
   order: Order;
+  onFulfilled: () => Promise<void>;
 }
 
-const OrderCard: React.FC<Props> = ({ order }) => {
+const OrderCard: React.FC<Props> = ({ order, onFulfilled }) => {
   return (
     <Card className={styles.order}>
       <div className={styles.content}>
@@ -32,7 +33,11 @@ const OrderCard: React.FC<Props> = ({ order }) => {
           ))}
         </ul>
       </div>
-      <button className="button is-fullwidth is-success mt-4">
+      <button
+        type="button"
+        className="button is-fullwidth is-success mt-4"
+        onClick={onFulfilled}
+      >
         Order fulfilled
       </button>
     </Card>

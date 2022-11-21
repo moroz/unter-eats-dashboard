@@ -1,9 +1,5 @@
-import { ORDER_DETAILS } from "@api/fragments/orderFragments";
 import { Order } from "@api/interfaces";
-import {
-  ListIncomingOrdersQueryResult,
-  LIST_INCOMING_ORDERS
-} from "@api/queries";
+import { LIST_INCOMING_ORDERS } from "@api/queries";
 import {
   gql,
   SubscriptionHookOptions,
@@ -26,6 +22,7 @@ export const ORDER_PLACED_SUBSCRIPTION = gql`
       shippingAddress
       phoneNo
       paidAt
+      fulfilledAt
       lineItems {
         id
         quantity

@@ -14,6 +14,7 @@ export interface Order {
   lineItems: LineItem[];
 
   paidAt: ISOTimestamp | null;
+  fulfilledAt: ISOTimestamp | null;
   insertedAt: ISOTimestamp;
   updatedAt: ISOTimestamp;
 }
