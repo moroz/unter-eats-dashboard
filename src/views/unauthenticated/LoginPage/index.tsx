@@ -5,6 +5,7 @@ import React, { useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import Layout from "../Layout";
+import { Card } from "@components";
 
 interface Props {}
 
@@ -24,35 +25,37 @@ const LoginPage: React.FC<Props> = () => {
 
   return (
     <Layout title="Login">
-      <FormWrapper {...methods} onSubmit={onSubmit}>
-        <h1 className="title is-4 has-text-centered">Sign in</h1>
-        {loading && <div className="notification">Signing in...</div>}
-        {hasError && (
-          <div className="notification is-warning">
-            Your email or password is incorrect.
-          </div>
-        )}
-        <InputField
-          label="Email:"
-          {...register("email")}
-          autoFocus
-          autoCapitalize="none"
-          autoCorrect="off"
-          autoComplete="email"
-          spellCheck={false}
-          required
-        />
-        <InputField
-          label="Password:"
-          type="password"
-          autoComplete="password"
-          required
-          {...register("password")}
-        />
-        <SubmitButton className="is-fullwidth" disabled={loading}>
-          Sign in
-        </SubmitButton>
-      </FormWrapper>
+      <Card>
+        <FormWrapper {...methods} onSubmit={onSubmit}>
+          <h1 className="title is-4 has-text-centered">Sign in</h1>
+          {loading && <div className="notification">Signing in...</div>}
+          {hasError && (
+            <div className="notification is-warning">
+              Your email or password is incorrect.
+            </div>
+          )}
+          <InputField
+            label="Email:"
+            {...register("email")}
+            autoFocus
+            autoCapitalize="none"
+            autoCorrect="off"
+            autoComplete="email"
+            spellCheck={false}
+            required
+          />
+          <InputField
+            label="Password:"
+            type="password"
+            autoComplete="password"
+            required
+            {...register("password")}
+          />
+          <SubmitButton className="is-fullwidth" disabled={loading}>
+            Sign in
+          </SubmitButton>
+        </FormWrapper>
+      </Card>
     </Layout>
   );
 };
