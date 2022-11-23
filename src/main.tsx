@@ -5,7 +5,6 @@ import "./css/app.scss";
 import { BrowserRouter } from "react-router-dom";
 import Router from "@views/Router";
 import { FlashProvider } from "@views/Layout/FlashProvider";
-import { SubscriptionProvider } from "@api/subscriptions";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <ApolloProvider client={client}>

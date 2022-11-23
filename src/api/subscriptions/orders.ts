@@ -6,6 +6,7 @@ import {
   useApolloClient,
   useSubscription
 } from "@apollo/client";
+import { playOrderNotification } from "@lib/audioHelpers";
 import { useSubscriptionClientContext } from "./contextHook";
 
 export const ORDER_PLACED_SUBSCRIPTION = gql`
@@ -56,6 +57,7 @@ export const useOrderPlacedSubscription = (opts?: SubscriptionHookOptions) => {
             );
             if (exists) return { orders };
             const newValue = [newOrder, ...orders];
+            playOrderNotification();
             return { orders: newValue };
           }
         );

@@ -10,14 +10,19 @@ interface Props {
   onFulfilled: () => Promise<void>;
 }
 
+export const formatName = (order: Order) => {
+  return [order.firstName, order.lastName].filter(Boolean).join(" ");
+};
+
 const OrderCard: React.FC<Props> = ({ order, onFulfilled }) => {
   return (
     <Card className={styles.order}>
       <div className={styles.content}>
         <p>{compactTime(order.paidAt!)}</p>
         <p>
-          {order.firstName} {order.lastName} &lt;{order.email}&gt;,{" "}
-          {formatPhone(order.phoneNo)}
+          <span className={styles.name}>{formatName(order)}</span>,{" "}
+          <span className={styles.email}>{order.email}</span>,{" "}
+          <span className={styles.phone}>{formatPhone(order.phoneNo)}</span>
         </p>
         <p>
           {order.deliveryType === "DELIVERY"

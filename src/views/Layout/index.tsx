@@ -10,7 +10,6 @@ import { APP_NAME } from "@/config";
 import useParsedQuery from "@hooks/useParsedQuery";
 import { useFlash } from "./FlashProvider";
 import FlashMessage from "./FlashMessage";
-import { SubscriptionProvider } from "@api/subscriptions";
 
 interface Props {
   children?: React.ReactNode;
