@@ -7,7 +7,7 @@ import styles from "./OrderCard.module.sass";
 
 interface Props {
   order: Order;
-  onFulfilled: () => Promise<void>;
+  onFulfilled?: () => Promise<void>;
 }
 
 export const formatName = (order: Order) => {
@@ -18,16 +18,27 @@ const OrderCard: React.FC<Props> = ({ order, onFulfilled }) => {
   return (
     <Card className={styles.order}>
       <div className={styles.content}>
-        <p>{compactTime(order.paidAt!)}</p>
+        {order.paidAt ? (
+          <p>
+            <strong>Paid at:</strong> {compactTime(order.paidAt!)}
+          </p>
+        ) : (
+          "Order not paid"
+        )}
+        <p></p>
         <p>
           <span className={styles.name}>{formatName(order)}</span>,{" "}
           <span className={styles.email}>{order.email}</span>,{" "}
           <span className={styles.phone}>{formatPhone(order.phoneNo)}</span>
         </p>
         <p>
-          {order.deliveryType === "DELIVERY"
-            ? `Delivery: ${order.shippingAddress}`
-            : "Pickup in restaurant"}
+          {order.deliveryType === "DELIVERY" ? (
+            <>
+              <strong>Delivery:</strong> {order.shippingAddress}
+            </>
+          ) : (
+            "Pickup in restaurant"
+          )}
         </p>
         <ul className={styles.items}>
           {order.lineItems.map((item, i) => (
@@ -37,14 +48,21 @@ const OrderCard: React.FC<Props> = ({ order, onFulfilled }) => {
             </li>
           ))}
         </ul>
+        {order.remarks ? (
+          <p>
+            <strong>Client's remarks:</strong> {order.remarks}
+          </p>
+        ) : null}
       </div>
-      <button
-        type="button"
-        className="button is-fullwidth is-success mt-4"
-        onClick={onFulfilled}
-      >
-        Order fulfilled
-      </button>
+      {onFulfilled ? (
+        <button
+          type="button"
+          className="button is-fullwidth is-success mt-4"
+          onClick={onFulfilled}
+        >
+          Order fulfilled
+        </button>
+      ) : null}
     </Card>
   );
 };

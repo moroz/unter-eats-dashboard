@@ -12,6 +12,7 @@ export interface Order {
   deliveryType: "PICKUP" | "DELIVERY";
   grandTotal: Decimal;
   lineItems: LineItem[];
+  remarks: string | null;
 
   paidAt: ISOTimestamp | null;
   fulfilledAt: ISOTimestamp | null;

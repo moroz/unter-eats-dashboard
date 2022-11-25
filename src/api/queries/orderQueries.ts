@@ -4,7 +4,7 @@ import {
   PaginationPage,
   StandardPaginationParams
 } from "@api/interfaces";
-import { gql, useQuery } from "@apollo/client";
+import { gql, QueryHookOptions, useQuery } from "@apollo/client";
 
 export const PAGINATE_ORDERS = gql`
   ${ORDER_DETAILS}
@@ -32,10 +32,18 @@ export interface PaginateOrdersQueryVariables {
   params: StandardPaginationParams;
 }
 
-export const usePaginateOrdersQuery = (params: StandardPaginationParams) =>
+export type UsePaginateOrdersOptions = Omit<
+  QueryHookOptions<PaginateOrdersQueryResult, PaginateOrdersQueryVariables>,
+  "variables"
+>;
+
+export const usePaginateOrdersQuery = (
+  params: StandardPaginationParams,
+  opts: UsePaginateOrdersOptions = {}
+) =>
   useQuery<PaginateOrdersQueryResult, PaginateOrdersQueryVariables>(
     PAGINATE_ORDERS,
-    { variables: { params } }
+    { variables: { params }, ...opts }
   );
 
 export const LIST_INCOMING_ORDERS = gql`

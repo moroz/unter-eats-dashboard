@@ -1,18 +1,29 @@
 import { usePaginateOrdersQuery } from "@api/queries/orderQueries";
 import { Pagination } from "@components";
+import useParsedQuery from "@hooks/useParsedQuery";
 import Layout from "@views/Layout";
 import React from "react";
+import OrderGrid from "../OrderGrid";
 
 interface Props {}
 
 const OrderIndex: React.FC<Props> = () => {
-  const { data, loading } = usePaginateOrdersQuery({});
+  const [{ page }] = useParsedQuery();
+  const { data } = usePaginateOrdersQuery(
+    { page },
+    {
+      onCompleted: () => {
+        window.scroll(0, 0);
+      }
+    }
+  );
 
   const pageInfo = data?.paginateOrders.pageInfo;
+  const orders = data?.paginateOrders.data;
 
   return (
     <Layout title="Orders">
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      <OrderGrid orders={orders} />
       <Pagination pageInfo={pageInfo} />
     </Layout>
   );

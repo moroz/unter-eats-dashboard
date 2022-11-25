@@ -46,8 +46,8 @@ const Pagination: React.FC<Props> = ({ pageInfo }) => {
           previousLinkClassName="pagination-previous"
           nextLinkClassName="pagination-next"
           activeLinkClassName="is-current"
-          previousLabel={page === 1 ? null : "< 上一頁"}
-          nextLabel={page === totalPages ? null : "下一頁 >"}
+          previousLabel={page === 1 ? null : "< Previous"}
+          nextLabel={page === totalPages ? null : "Next >"}
         />
       </nav>
       <PageDescription pageInfo={pageInfo} />
