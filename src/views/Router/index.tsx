@@ -1,13 +1,11 @@
-import { Dashboard, OrderIndex, OrderRoutes } from "@views/orders";
-import React from "react";
 import { Routes, Route } from "react-router-dom";
+
+import { Dashboard, OrderRoutes } from "@views/orders";
 import NotFound from "@views/NotFound";
 import { LoginPage } from "@views/unauthenticated";
 import { ProductRoutes } from "@views/products";
 
-interface Props {}
-
-const Router: React.FC<Props> = () => {
+const Router = () => {
   return (
     <Routes>
       <Route path="/" element={<Dashboard />} />
