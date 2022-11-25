@@ -1,4 +1,4 @@
-import { Dashboard, OrderIndex } from "@views/orders";
+import { Dashboard, OrderIndex, OrderRoutes } from "@views/orders";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import NotFound from "@views/NotFound";
@@ -12,7 +12,7 @@ const Router: React.FC<Props> = () => {
     <Routes>
       <Route path="/" element={<Dashboard />} />
       <Route path="/sign-in" element={<LoginPage />} />
-      <Route path="/orders" element={<OrderIndex />} />
+      <Route path="/orders/*" element={<OrderRoutes />} />
       <Route path="/products/*" element={<ProductRoutes />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

@@ -14,6 +14,7 @@ export const ORDER_DETAILS = gql`
     phoneNo
     paidAt
     fulfilledAt
+    metadata
     lineItems {
       id
       quantity

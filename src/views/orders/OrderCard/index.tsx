@@ -1,20 +1,25 @@
 import { Order } from "@api/interfaces";
 import { Card } from "@components";
+import useReferrer from "@hooks/useReferrer";
 import { compactTime } from "@lib/dateHelpers";
 import { formatPhone } from "@lib/phoneHelpers";
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./OrderCard.module.sass";
 
 interface Props {
   order: Order;
   onFulfilled?: () => Promise<void>;
+  clickable?: boolean;
 }
 
 export const formatName = (order: Order) => {
   return [order.firstName, order.lastName].filter(Boolean).join(" ");
 };
 
-const OrderCard: React.FC<Props> = ({ order, onFulfilled }) => {
+const OrderCard: React.FC<Props> = ({ order, onFulfilled, clickable }) => {
+  const { referrerQuery } = useReferrer();
+
   return (
     <Card className={styles.order}>
       <div className={styles.content}>
@@ -62,6 +67,9 @@ const OrderCard: React.FC<Props> = ({ order, onFulfilled }) => {
         >
           Order fulfilled
         </button>
+      ) : null}
+      {clickable ? (
+        <Link to={`/orders/${order.id}?${referrerQuery}`}>Order details</Link>
       ) : null}
     </Card>
   );

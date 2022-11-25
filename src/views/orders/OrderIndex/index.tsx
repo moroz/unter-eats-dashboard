@@ -23,7 +23,7 @@ const OrderIndex: React.FC<Props> = () => {
 
   return (
     <Layout title="Orders">
-      <OrderGrid orders={orders} />
+      <OrderGrid orders={orders} clickable />
       <Pagination pageInfo={pageInfo} />
     </Layout>
   );

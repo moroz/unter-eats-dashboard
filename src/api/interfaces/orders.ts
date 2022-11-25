@@ -13,6 +13,7 @@ export interface Order {
   grandTotal: Decimal;
   lineItems: LineItem[];
   remarks: string | null;
+  metadata: Record<string, any> | null;
 
   paidAt: ISOTimestamp | null;
   fulfilledAt: ISOTimestamp | null;

@@ -6,9 +6,14 @@ import styles from "./OrderGrid.module.sass";
 interface Props {
   orders?: Order[];
   onOrderFulfilled?: (order: Order) => () => Promise<void>;
+  clickable?: boolean;
 }
 
-const OrderGrid: React.FC<Props> = ({ orders, onOrderFulfilled }) => {
+const OrderGrid: React.FC<Props> = ({
+  orders,
+  onOrderFulfilled,
+  clickable
+}) => {
   return (
     <div className={styles.grid}>
       {orders?.map((order) => (
@@ -16,6 +21,7 @@ const OrderGrid: React.FC<Props> = ({ orders, onOrderFulfilled }) => {
           key={order.id}
           order={order}
           onFulfilled={onOrderFulfilled?.(order)}
+          clickable={clickable}
         />
       ))}
     </div>
