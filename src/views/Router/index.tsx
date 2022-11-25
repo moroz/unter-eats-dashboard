@@ -1,8 +1,7 @@
-import { Dashboard } from "@views/dashboard";
+import { Dashboard, OrderIndex } from "@views/orders";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import NotFound from "@views/NotFound";
-import { OrderIndex } from "@views/orders";
 import { LoginPage } from "@views/unauthenticated";
 import { ProductRoutes } from "@views/products";
 
