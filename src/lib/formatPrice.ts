@@ -1,4 +1,11 @@
-export default function formatPrice(amount: string | number, currency: string) {
-  const asNumber = Number(amount).toFixed(2);
-  return `${asNumber} ${currency}`;
+const intl = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "PLN",
+  maximumFractionDigits: 2,
+  minimumFractionDigits: 0
+});
+
+export default function formatPrice(amount: string | number | null) {
+  if (!amount) return "";
+  return intl.format(Number(amount));
 }

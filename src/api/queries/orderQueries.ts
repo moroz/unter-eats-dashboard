@@ -1,5 +1,6 @@
 import { ORDER_DETAILS } from "@api/fragments/orderFragments";
 import {
+  ID,
   Order,
   PaginationPage,
   StandardPaginationParams
@@ -62,3 +63,29 @@ export interface ListIncomingOrdersQueryResult {
 
 export const useListIncomingOrdersQuery = () =>
   useQuery<ListIncomingOrdersQueryResult>(LIST_INCOMING_ORDERS);
+
+export const GET_ORDER = gql`
+  ${ORDER_DETAILS}
+
+  query GetOrder($id: ID!) {
+    order(id: $id) {
+      ...OrderDetails
+      insertedAt
+      updatedAt
+    }
+  }
+`;
+
+export interface GetOrderQueryResult {
+  order: Order | null;
+}
+
+export interface GetOrderQueryVariables {
+  id: ID;
+}
+
+export const useGetOrderQuery = (id?: ID) =>
+  useQuery<GetOrderQueryResult, GetOrderQueryVariables>(GET_ORDER, {
+    variables: { id: id! },
+    skip: !id
+  });

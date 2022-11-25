@@ -3,7 +3,7 @@ import { useGetProductQuery } from "@api/queries/productQueries";
 import AttributesList from "@components/AttributesList";
 import { EditButton } from "@components/buttons";
 import ProductImage from "@components/products/ProductImage";
-import { formatPrice } from "@lib/priceHelpers";
+import formatPrice from "@lib/formatPrice";
 import Layout from "@views/Layout";
 import { LayoutLoader } from "@views/Layout/Loader";
 import NotFound from "@views/NotFound";

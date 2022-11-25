@@ -3,6 +3,7 @@ import { Card } from "@components";
 import useReferrer from "@hooks/useReferrer";
 import { compactTime } from "@lib/dateHelpers";
 import { formatPhone } from "@lib/phoneHelpers";
+import formatPrice from "@lib/formatPrice";
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./OrderCard.module.sass";
@@ -30,7 +31,6 @@ const OrderCard: React.FC<Props> = ({ order, onFulfilled, clickable }) => {
         ) : (
           "Order not paid"
         )}
-        <p></p>
         <p>
           <span className={styles.name}>{formatName(order)}</span>,{" "}
           <span className={styles.email}>{order.email}</span>,{" "}
@@ -49,7 +49,7 @@ const OrderCard: React.FC<Props> = ({ order, onFulfilled, clickable }) => {
           {order.lineItems.map((item, i) => (
             <li key={i}>
               <span className={styles.quantity}>{item.quantity} &times; </span>
-              {item.productName} ({item.productPrice} PLN)
+              {item.productName} ({formatPrice(item.productPrice)})
             </li>
           ))}
         </ul>

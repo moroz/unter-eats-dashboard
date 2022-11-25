@@ -1,128 +1,129 @@
 @import "../../css/variables.sass"
 
-.root
-  display: grid
-  min-height: 100vh
-  grid-template-columns: $sidebar-width 1fr
-  background: $background
-  color: $fg-color
+@layer layout
+  .root
+    display: grid
+    min-height: 100vh
+    grid-template-columns: $sidebar-width 1fr
+    background: $background
+    color: $fg-color
 
-  header
-    display: flex
-    justify-content: space-between
-    align-items: flex-end
-    margin-bottom: 1rem
+    header
+      display: flex
+      justify-content: space-between
+      align-items: flex-end
+      margin-bottom: 1rem
 
-    > *
-      margin-bottom: 0
-
-    :global
-      .buttons:last-child
-        gap: .25rem
+      > *
         margin-bottom: 0
 
-      .button, .field
-        margin-bottom: 0
+      :global
+        .buttons:last-child
+          gap: .25rem
+          margin-bottom: 0
 
-  > main
-    padding: 1.75rem
-    display: flex
-    flex-direction: column
-    grid-column: 2
+        .button, .field
+          margin-bottom: 0
 
-  &.noPadding
     > main
-      padding: 0
+      padding: 1.75rem
+      display: flex
+      flex-direction: column
+      grid-column: 2
 
-.breadcrumb
-  margin-bottom: .5rem
-  display: inline-block
+    &.noPadding
+      > main
+        padding: 0
 
-.sidebar
-  background: $sidebar-bg
-  color: $sidebar-fg
-  display: flex
-  flex-direction: column
-  box-shadow: 0px 0 5px transparentize(black, .8)
-  height: 100vh
-  position: fixed
-  width: $sidebar-width
-  z-index: 10
+  .breadcrumb
+    margin-bottom: .5rem
+    display: inline-block
 
-  a, a:visited
-    color: inherit
-
-  h1, h2
-    text-align: center
-
-  h1
-    color: inherit
-    margin-top: 1.5rem
-
-  nav
+  .sidebar
+    background: $sidebar-bg
+    color: $sidebar-fg
     display: flex
     flex-direction: column
-    flex: 1
+    box-shadow: 0px 0 5px transparentize(black, .8)
+    height: 100vh
+    position: fixed
+    width: $sidebar-width
+    z-index: 10
 
-.sidebar
-  section
-    &:not(:first-of-type)
-      margin-top: 1rem
+    a, a:visited
+      color: inherit
+
+    h1, h2
+      text-align: center
 
     h1
-      padding: 0 $sidebar-base-padding
       color: inherit
-      font-weight: bold
-      margin-bottom: .25rem
+      margin-top: 1.5rem
 
-.sidebarLink, .logout
-  display: block
-  height: $sidebar-link-height
-  line-height: $sidebar-link-height
-  padding: 0 $sidebar-base-padding
-  color: inherit
-  font-size: 1.1em
-  cursor: pointer
-  margin-bottom: .25rem
+    nav
+      display: flex
+      flex-direction: column
+      flex: 1
 
-  &:hover
-    background: darken($sidebar-bg, 6%)
+  .sidebar
+    section
+      &:not(:first-of-type)
+        margin-top: 1rem
+
+      h1
+        padding: 0 $sidebar-base-padding
+        color: inherit
+        font-weight: bold
+        margin-bottom: .25rem
+
+  .sidebarLink, .logout
+    display: block
+    height: $sidebar-link-height
+    line-height: $sidebar-link-height
+    padding: 0 $sidebar-base-padding
     color: inherit
+    font-size: 1.1em
+    cursor: pointer
+    margin-bottom: .25rem
 
-.userData
-  padding: 0 1.25rem
+    &:hover
+      background: darken($sidebar-bg, 6%)
+      color: inherit
 
-.userName
-  font-weight: bold
-  margin-bottom: .5rem
+  .userData
+    padding: 0 1.25rem
 
-.logout
-  background: none
-  text-align: left
-  padding: 0 1.25rem
-  color: $danger
-  border: 0
-  outline: 0
-  margin-bottom: 1.5rem
+  .userName
+    font-weight: bold
+    margin-bottom: .5rem
 
-  &:hover
+  .logout
+    background: none
+    text-align: left
+    padding: 0 1.25rem
     color: $danger
+    border: 0
+    outline: 0
+    margin-bottom: 1.5rem
 
-.title
-  margin-bottom: 1.5rem
+    &:hover
+      color: $danger
 
-  h2
-    font-size: 1rem
+  .title
+    margin-bottom: 1.5rem
 
-.currentUser
-  text-align: left
-  padding: 0 1.25rem
+    h2
+      font-size: 1rem
 
-  .name
-    font-size: 1.125rem
-    font-weight: 600
+  .currentUser
+    text-align: left
+    padding: 0 1.25rem
 
-  .label
-    font-size: rem-calc(13px)
+    .name
+      font-size: 1.125rem
+      font-weight: 600
+
+    .label
+      font-size: rem-calc(13px)
 
 

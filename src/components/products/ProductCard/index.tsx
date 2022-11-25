@@ -1,4 +1,4 @@
-import { formatPrice } from "@lib/priceHelpers";
+import formatPrice from "@lib/formatPrice";
 import { Product } from "@api/interfaces";
 import React from "react";
 import ProductImage from "../ProductImage";

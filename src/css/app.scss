@@ -1,30 +1,38 @@
+@layer bulma, base, layout, utils, overrides;
+
 @import "./variables";
-@import "bulma";
 
-.label {
-  &:not(:last-child) {
-    margin-bottom: 0.25em
+@layer bulma {
+  @import "bulma";
+}
+
+@layer base {
+  .label {
+    &:not(:last-child) {
+      margin-bottom: 0.25em;
+    }
   }
-}
 
-pre {
-  background: $surface;
-  color: $text;
-}
+  pre {
+    background: $surface;
+    color: $text;
+  }
 
-.button.is-success, .button.is-info {
-  color: $body-background-color;
-
-  &:hover {
+  .button.is-success,
+  .button.is-info {
     color: $body-background-color;
+
+    &:hover {
+      color: $body-background-color;
+    }
   }
-}
 
-.container {
-  width: $container-width;
-  margin: 0 auto;
-}
+  .container {
+    width: $container-width;
+    margin: 0 auto;
+  }
 
-a:hover {
-  color: lighten($link, 10%);
+  a:hover {
+    color: lighten($link, 10%);
+  }
 }
