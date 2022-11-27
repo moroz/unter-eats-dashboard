@@ -1,3 +1,4 @@
+import { useUpdateProductMutation } from "@api/mutations";
 import { uploadProductImage } from "@api/mutations/imageMutations";
 import { useGetProductQuery } from "@api/queries/productQueries";
 import AttributesList from "@components/AttributesList";
@@ -17,6 +18,15 @@ const ShowProduct: React.FC<Props> = () => {
   const { id } = useParams();
   const { data, loading, refetch } = useGetProductQuery(id!);
   const product = data?.product;
+  const [mutate] = useUpdateProductMutation();
+
+  const onToggleProductAvailability = useCallback(async () => {
+    if (!product) return;
+    const inStock = product?.inStock;
+    await mutate({
+      variables: { id: id!, params: { inStock: !inStock } }
+    });
+  }, [product]);
 
   const onUploadImage: EventHandler<ChangeEvent> = useCallback(
     async (e) => {

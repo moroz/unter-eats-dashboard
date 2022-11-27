@@ -22,6 +22,7 @@ export interface CreateProductParams {
   descriptionEn?: string | null;
   price?: Decimal | null;
   slug?: string | null;
+  inStock?: boolean;
 }
 
 export type UpdateProductParams = Partial<CreateProductParams>;
