@@ -9,6 +9,7 @@ export interface Product {
   imageUuid: string | null;
   price: Decimal | null;
   slug: string;
+  inStock: boolean;
 
   insertedAt: ISOTimestamp;
   updatedAt: ISOTimestamp;

@@ -7,6 +7,7 @@ export const PRODUCT_DETAILS = gql`
     nameEn
     descriptionEn
     descriptionPl
+    inStock
     slug
     price
   }
