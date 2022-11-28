@@ -19,7 +19,9 @@
   }
 
   .button.is-success,
-  .button.is-info {
+  .button.is-info,
+  .button.is-danger,
+  .button.is-warning {
     color: $body-background-color;
 
     &:hover {

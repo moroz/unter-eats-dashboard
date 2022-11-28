@@ -5,6 +5,8 @@ import { ReactComponent as PDFIcon } from "./file-pdf.svg";
 import { ReactComponent as DownloadIcon } from "./download.svg";
 import { ReactComponent as XmarkIcon } from "./xmark.svg";
 import { ReactComponent as EditIcon } from "./file-pen.svg";
+import { ReactComponent as BoxesStackedIcon } from "./boxes-stacked.svg";
+import PikachuFace from "./pikaczu.png";
 
 export { default as IconButton, makeIconButton } from "./IconButton";
 export { default as SubmitButton } from "./SubmitButton";
@@ -41,4 +43,14 @@ export const EditButton = makeIconButton({
   overrideClassName: "is-info",
   icon: EditIcon,
   defaultChildren: "Edit"
+});
+
+export const BoxesStackedButton = makeIconButton({
+  overrideClassName: "is-success",
+  icon: BoxesStackedIcon
+});
+
+export const PikachuFaceButton = makeIconButton({
+  overrideClassName: "is-danger",
+  icon: () => <img src={PikachuFace} />
 });

@@ -6,7 +6,9 @@ import {
   Product,
   UpdateProductParams
 } from "@api/interfaces";
+import { useGetProductQuery } from "@api/queries";
 import { gql, useMutation } from "@apollo/client";
+import { useCallback } from "react";
 
 export const CREATE_PRODUCT = gql`
   ${PRODUCT_DETAILS}
@@ -71,3 +73,19 @@ export const useUpdateProductMutation = () =>
   useMutation<UpdateProductMutationResult, UpdateProductMutationVariables>(
     UPDATE_PRODUCT
   );
+
+export const useToggleProductAvailabilityMutation = (id: ID) => {
+  const { data } = useGetProductQuery(id!);
+  const product = data?.product;
+  const [mutate, { loading: mutating }] = useUpdateProductMutation();
+
+  const toggle = useCallback(async () => {
+    if (!product) return;
+    const inStock = product?.inStock;
+    await mutate({
+      variables: { id: id!, params: { inStock: !inStock } }
+    });
+  }, [product]);
+
+  return [toggle, mutating] as [() => Promise<void>, boolean];
+};

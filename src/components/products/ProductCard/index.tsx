@@ -5,6 +5,7 @@ import ProductImage from "../ProductImage";
 import styles from "./ProductCard.module.sass";
 import { Link } from "react-router-dom";
 import clsx from "clsx";
+import { formatAvailability } from "@lib/availabilityHelpers";
 
 interface Props {
   product: Product;
@@ -24,7 +25,9 @@ const ProductCard: React.FC<Props> = ({ product, referrer }) => {
       <ProductImage product={product} />
       <section className={styles.label}>
         <span className={styles.name}>{product.namePl}</span>
-        <span className={styles.price}>{formatPrice(product.price)}</span>
+        <span className={styles.price}>
+          {formatPrice(product.price)} &bull; {formatAvailability(product)}
+        </span>
       </section>
     </Link>
   );

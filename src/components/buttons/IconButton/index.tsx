@@ -9,6 +9,7 @@ interface BaseProps {
   children?: React.ReactNode;
   download?: boolean | string;
   target?: string;
+  disabled?: boolean;
 }
 
 export interface IconButtonProps extends BaseProps {

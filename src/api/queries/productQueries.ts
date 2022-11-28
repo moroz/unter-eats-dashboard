@@ -20,6 +20,7 @@ export const PAGINATE_PRODUCTS = gql`
         price
         namePl
         imageUuid
+        inStock
         descriptionPl
         slug
       }
@@ -55,6 +56,7 @@ export const GET_PRODUCT = gql`
       imageUuid
       descriptionPl
       descriptionEn
+      inStock
       price
       categories {
         id
