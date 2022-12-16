@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import SidebarLink from "./SidebarLink";
 import { APP_NAME } from "@/config";
 import StoreOpenSection from "@components/store/StoreOpenSection";
+import { SidebarButton } from "@components/buttons";
 
 const Sidebar = () => {
   const { signOut, user } = useAuth();
@@ -23,9 +24,9 @@ const Sidebar = () => {
         <p>Current user:</p>
         <p className={styles.userName}>{user?.email}</p>
       </section>
-      <button onClick={signOut} className={styles.logout}>
+      <SidebarButton onClick={signOut} className={styles.logout}>
         Sign out
-      </button>
+      </SidebarButton>
     </aside>
   );
 };

@@ -11,6 +11,7 @@ import PikachuFace from "./pikaczu.png";
 export { default as IconButton, makeIconButton } from "./IconButton";
 export { default as SubmitButton } from "./SubmitButton";
 export { default as ButtonGroup } from "./ButtonGroup";
+export { default as SidebarButton } from "./SidebarButton";
 
 export const NewButton = makeIconButton({
   icon: PlusIcon,

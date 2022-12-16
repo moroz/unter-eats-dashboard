@@ -1,0 +1,23 @@
+@import @css/variables
+
+@layer base
+  .button
+    --color: #{$danger}
+    background: none
+    text-align: left
+    padding: 0 $sidebar-base-padding
+    color: var(--color)
+    border: 0
+    outline: 0
+    height: $sidebar-link-height
+    line-height: $sidebar-link-height
+    display: block
+    margin-bottom: 1.5rem
+    font-size: 1.1em
+    cursor: pointer
+    width: 100%
+
+    &:hover
+      color: var(--color)
+      background: darken($sidebar-bg, 6%)
+
