@@ -3,6 +3,7 @@ import styles from "../Layout.module.sass";
 import { Link } from "react-router-dom";
 import SidebarLink from "./SidebarLink";
 import { APP_NAME } from "@/config";
+import StoreOpenSection from "@components/store/StoreOpenSection";
 
 const Sidebar = () => {
   const { signOut, user } = useAuth();
@@ -14,9 +15,10 @@ const Sidebar = () => {
       </Link>
       <nav>
         <SidebarLink to="/">Incoming orders</SidebarLink>
-        <SidebarLink to="/orders">Fulfilled orders</SidebarLink>
+        <SidebarLink to="/orders">Order history</SidebarLink>
         <SidebarLink to="/products">Products</SidebarLink>
       </nav>
+      <StoreOpenSection />
       <section className={styles.userData}>
         <p>Current user:</p>
         <p className={styles.userName}>{user?.email}</p>

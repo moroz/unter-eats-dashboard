@@ -63,18 +63,18 @@
     nav
       display: flex
       flex-direction: column
-      flex: 1
 
   .sidebar
     section
-      &:not(:first-of-type)
-        margin-top: 1rem
-
       h1
         padding: 0 $sidebar-base-padding
         color: inherit
         font-weight: bold
         margin-bottom: .25rem
+
+  .userData
+    padding: 0 1.25rem
+    margin-top: auto
 
   .sidebarLink, .logout
     display: block
@@ -89,9 +89,6 @@
     &:hover
       background: darken($sidebar-bg, 6%)
       color: inherit
-
-  .userData
-    padding: 0 1.25rem
 
   .userName
     font-weight: bold

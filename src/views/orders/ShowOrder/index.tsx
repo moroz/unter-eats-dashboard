@@ -37,6 +37,12 @@ const ShowOrder: React.FC<Props> = () => {
             value: order.paidAt ? compactTime(order.paidAt) : "Not paid"
           },
           {
+            label: "Fulfilled at:",
+            value: order.fulfilledAt
+              ? compactTime(order.fulfilledAt)
+              : "Not fulfilled"
+          },
+          {
             label: "Full name:",
             value: [order.firstName, order.lastName].filter(Boolean).join(" ")
           }
